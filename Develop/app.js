@@ -62,7 +62,7 @@ function createTeam(){
                 name: 'managerOfficeNumber'
             },
         ]).then(userInput => {
-            console.loge(userInput);
+            console.log(userInput);
 
             const manager = new Manager(userInput.managerName, userInput.managerEmail, userInput.managerID, userInput.managerOfficeNumber);
             teammates.push(manager)
@@ -99,7 +99,7 @@ function createTeam(){
         ]).then(userInput => {
             console.log(userInput);
 
-            const engineer = new Engineer(userInput.engineerName. userInput.engineerEmail, userInput.engineerID, userInput.engineerGithub);
+            const engineer = new Engineer(userInput.engineerName, userInput.engineerEmail, userInput.engineerID, userInput.engineerGithub);
             teammates.push(engineer);
 
             createTeam();

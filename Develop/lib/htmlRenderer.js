@@ -56,7 +56,7 @@ const renderIntern = intern => {
 const renderMain = html => {
   const template = fs.readFileSync(path.resolve(templatesDir, "main.html"), "utf8");
   const masterHTML = replacePlaceholders(template, "team", html);
-  const file = path.join(__dirname, "output", "/team.html");
+  const file = path.join(__dirname, "../output", "./team.html");
   fs.writeFileSync(file, masterHTML);
   // return replacePlaceholders(template, "team", html);
 };
