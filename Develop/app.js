@@ -74,8 +74,76 @@ function createTeam(){
 
 
 
-    
+    function addEngineer(){
+        inquirer.prompt([
+            {
+                type: 'input',
+                message: 'What is your name?',
+                name: 'engineerName'
+            },
+            {
+                type: 'input',
+                message: 'What is your email address?',
+                name: 'engineerEmail'
+            },
+            {
+                type: 'input',
+                message: 'What is your ID number?',
+                name: 'engineerID'
+            },
+            {
+                type: 'input',
+                message: 'What is your github username?',
+                name: 'engineerGithub'
+            },
+        ]).then(userInput => {
+            console.log(userInput);
+
+            const engineer = new Engineer(userInput.engineerName. userInput.engineerEmail, userInput.engineerID, userInput.engineerGithub);
+            teammates.push(engineer);
+
+            createTeam();
+        })
+    }
+
+    function addIntern(){
+        inquirer.prompt([
+            {
+                type: 'input',
+                message: 'What is your name?',
+                name: 'internName'
+            },
+            {
+                type: 'input',
+                message: 'What is your email address?',
+                name: 'internEmail'
+            },
+            {
+                type: 'input',
+                message: 'What is your ID Number?',
+                name: 'internID'
+            },
+            {
+                type: 'input',
+                message: 'What is the school you are attending?',
+                name: 'internSchool'
+            },
+        ]).then(userInput => {
+            console.log(userInput);
+
+            const intern = new Intern(userInput.internName, userInput.internEmail, userInput.internID, userInput.internSchool);
+            teammates.push(intern);
+
+            createTeam();
+        })
+    }
+
+
 }
+
+module.exports = teammates;
+
+createTeam();
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
