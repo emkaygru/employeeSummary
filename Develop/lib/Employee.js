@@ -2,7 +2,7 @@
 
 class Employee{
     // constructor function to create the employee class
-    constructor(name,id, email){
+    constructor(name, id, email){
         this.name = name;
         this.id = id;
         this.email = email;

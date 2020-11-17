@@ -4,9 +4,9 @@ const Employee = require('../lib/employee');
 // engineer class extends employee class
 class Engineer extends Employee{
     // constructor class has the email, name, id parameters and github specific to engineer 
-    constructor(email, name, id, github){
+    constructor(name, id, email, github){
 
-        super(email, name, id)
+        super(name, id, email)
         this.github = github;
     }
     // get github method

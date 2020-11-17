@@ -6,9 +6,9 @@ const Employee = require('../lib/employee');
 // Manager class extends employee class
 class Manager extends Employee{
     // constructor class has the email, name, id parameters and github specific to manager 
-    constructor(email, name, id, officeNumber){
+    constructor(name, id, email, officeNumber){
         // super pulls the aspects from the employee class to the manager class
-        super(email, name, id)
+        super(name, id, email)
         this.officeNumber = officeNumber;
     }
     // get office Number method returns office number
