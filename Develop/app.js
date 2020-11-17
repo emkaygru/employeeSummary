@@ -12,6 +12,30 @@ const render = require("./lib/htmlRenderer");
 
 const teammates = [];
 
+const validName = (input) => {
+    if(input = ''){
+        console.log(`Please enter a valid name.`);
+    }else{
+        return true;
+    }
+}
+
+const validPhone = (input) => {
+    if(input = ''){
+        console.log(`Please enter a valid phone number`);
+    }else{
+        return true;
+    }
+}
+
+const validID = (input) => {
+    if(input = ''){
+        console.log(`Please enter a valid ID number.`);
+    }else{
+        return true;
+    }
+}
+
 function createTeam(){
 
     inquirer.prompt([
@@ -21,7 +45,7 @@ function createTeam(){
             name: 'userChoice',
             choices: [
                 'Manager',
-                'Engineer',,
+                'Engineer',
                 'Intern',
                 'No other Employees'
 
