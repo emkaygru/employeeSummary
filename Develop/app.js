@@ -5,36 +5,38 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+// path directories
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-
+// render directory for HTML renderer 
 const render = require("./lib/htmlRenderer");
 
 const teammates = [];
 
 const validName = (input) => {
-    if(input = ''){
-        console.log(`Please enter a valid name.`);
+    if(/\d/.test(input)|| input === ''){
+        return 'Please enter a valid name.';
     }else{
         return true;
     }
-}
-
-const validPhone = (input) => {
-    if(input = ''){
-        console.log(`Please enter a valid phone number`);
-    }else{
-        return true;
-    }
-}
+};
 
 const validID = (input) => {
-    if(input = ''){
-        console.log(`Please enter a valid ID number.`);
+    if(isNaN(input) || input === ''){
+        return 'Please enter a valid number';
     }else{
         return true;
     }
-}
+};
+
+const validEmail = (input) => {
+    if(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(input) || input === ''){
+        return true;
+    }else{
+        return 'Please enter a valid e-mail address.'
+    }
+};
+
 
 function createTeam(){
 
@@ -68,22 +70,28 @@ function createTeam(){
             {
                 type: 'input',
                 message: 'What is your name?',
-                name: 'managerName'           
+                name: 'managerName',
+                validate: validName,
+
             },
             {
                 type: 'input',
                 message: 'What is your email address?',
-                name: 'managerEmail',  
+                name: 'managerEmail', 
+                validate: validEmail, 
+
             },
             {
                 type: 'input',
                 message: 'What is your ID number?',
-                name: 'managerID'
+                name: 'managerID',
+                validate: validID
             },
             {
                 type: 'input',
                 message: 'What is your Office Number?',
-                name: 'managerOfficeNumber'
+                name: 'managerOfficeNumber',
+                validate: validID
             },
         ]).then(userInput => {
             console.log(userInput);
@@ -103,22 +111,26 @@ function createTeam(){
             {
                 type: 'input',
                 message: 'What is your name?',
-                name: 'engineerName'
+                name: 'engineerName',
+                validate: validName
             },
             {
                 type: 'input',
                 message: 'What is your email address?',
-                name: 'engineerEmail'
+                name: 'engineerEmail',
+                validate: validEmail
             },
             {
                 type: 'input',
                 message: 'What is your ID number?',
-                name: 'engineerID'
+                name: 'engineerID',
+                validate: validID
             },
             {
                 type: 'input',
                 message: 'What is your github username?',
-                name: 'engineerGithub'
+                name: 'engineerGithub',
+                validate: validName
             },
         ]).then(userInput => {
             console.log(userInput);
@@ -135,22 +147,27 @@ function createTeam(){
             {
                 type: 'input',
                 message: 'What is your name?',
-                name: 'internName'
+                name: 'internName',
+                validate: validName
+
             },
             {
                 type: 'input',
                 message: 'What is your email address?',
-                name: 'internEmail'
+                name: 'internEmail',
+                validate: validEmail
             },
             {
                 type: 'input',
                 message: 'What is your ID Number?',
-                name: 'internID'
+                name: 'internID',
+                validate: validID
             },
             {
                 type: 'input',
                 message: 'What is the school you are attending?',
-                name: 'internSchool'
+                name: 'internSchool',
+                validate: validName
             },
         ]).then(userInput => {
             console.log(userInput);
@@ -165,28 +182,8 @@ function createTeam(){
 
 }
 
+// export teammates 
 module.exports = teammates;
-
+// create team function call 
 createTeam();
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
 
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
-
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
