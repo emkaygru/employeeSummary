@@ -1,6 +1,7 @@
 # employeeSummary
 MSU Web Development Bootcamp
 
+[!youtube link] https://youtu.be/3DRuhwChbyA
 
 This CLI application generates and saves an html file based on the user input.
 
